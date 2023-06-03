@@ -12,7 +12,7 @@ def test_same_seed_same_random():
 
 
 def test_state_setter():
-    state = random.random()
+    state = random.randint(0, 100)
     random.setstate(state)
     assert random.getstate() == state
 

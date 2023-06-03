@@ -1,19 +1,23 @@
 from typing import Sequence
-
+import time
 _seed = 4
 
 
-def seed(a: int = None, version: int = 2):
+def seed(a=None, version: int = 2):
     global _seed
+    if a is None:
+        _seed = int(time.time())
     _seed = a
 
 
 def getstate() -> object:
-    ...
+    global _seed
+    return _seed
 
 
 def setstate(state: object):
-    ...
+    global _seed
+    _seed = int(state)
 
 
 def getrandbits(k) -> int:
