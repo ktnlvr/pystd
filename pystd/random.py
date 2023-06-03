@@ -25,7 +25,7 @@ def getrandbits(k) -> int:
 
 
 def randbytes(n: int) -> bytes:
-    ...
+    return bytes(map(lambda _: randint(0, 255), range(n)))
 
 
 def random() -> float:
