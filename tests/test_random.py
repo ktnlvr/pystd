@@ -24,7 +24,7 @@ def test_randbits_len():
         bits = random.getrandbits(i)
         assert type(bits) is int
         assert bits >= 0
-        assert bits.bit_count() <= i
+        assert bits.bit_length() <= i
 
 
 def test_randint():
