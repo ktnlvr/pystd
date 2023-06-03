@@ -33,5 +33,5 @@ def test_randint():
     for i in range(10000):
         a = random.randint(0, i)
         b = random.randint(a+1, (i+1)**2)
-        n = random.randint(min(a, b), max(a, b))
+        n = random.randint(a, b)
         assert a <= n <= b
