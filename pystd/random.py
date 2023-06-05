@@ -46,17 +46,19 @@ def randint(a: int, b: int) -> int:
 
 
 def choice(seq: Sequence) -> object:
-    ...
+    if not seq:
+        raise IndexError
+    return seq[randint(0, len(seq) - 1)]
 
 
-def choices(
-    population, weights=None, *, cumulative_weights=None, k=1
-) -> list:
-    ...
-
-
-def shuffle(seq: Sequence) -> object:
-    ...
+def choices(population, weights=None, *, cumulative_weights=None, k=1) -> list:
+    ls = list()
+    for i in range(len(population)):
+        ls = ls + [population[i]] * weights[i]
+    res = list()
+    for i in range(k):
+        res.append(choice(ls))
+    return res
 
 
 def sample(population, k, *, counts=None):
