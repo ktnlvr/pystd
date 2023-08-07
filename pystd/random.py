@@ -62,4 +62,20 @@ def choices(population, weights=None, *, cumulative_weights=None, k=1) -> list:
 
 
 def sample(population, k, *, counts=None):
-    ...
+    population = list(population)
+    if counts is None:
+        p1 = population.copy()
+    else:
+        p1 = list()
+        for i in range(len(population)):
+            p1.extend([population[i]] * counts[i])
+    
+    if k > len(p1):
+        raise ValueError
+    
+    ls = list()
+    for i in range(k):
+        b = choice(p1)
+        ls.append(b)
+        p1.remove(b)
+    return ls
